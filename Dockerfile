@@ -1,12 +1,9 @@
-FROM base
-MAINTAINER Arcus "http://arcus.io"
+FROM debian:jessie
 RUN apt-get update
-RUN DEBIAN_FRONTEND=noninteractive apt-get install -y wget nginx-full
-RUN (cd /tmp && wget --no-check-certificate https://github.com/elasticsearch/kibana/archive/v3.0.0milestone2.tar.gz -O pkg.tar.gz && tar zxf pkg.tar.gz && cd kibana-* && cp -rf ./* /usr/share/nginx/www/)
+ENV DEBIAN_FRONTEND noninteractive
+RUN apt-get install -y nginx-full wget
+RUN wget https://download.elasticsearch.org/kibana/kibana/kibana-3.1.0.tar.gz -O /tmp/kibana.tar.gz && \
+    tar zxf /tmp/kibana.tar.gz && mv kibana-3.1.0/* /usr/share/nginx/html
 RUN echo "daemon off;" >> /etc/nginx/nginx.conf
-ADD run.sh /usr/local/bin/run
-RUN chmod +x /usr/local/bin/run
-RUN rm -rf /tmp/*
-
 EXPOSE 80
-CMD ["/usr/local/bin/run"]
+CMD ["nginx", "-c", "/etc/nginx/nginx.conf"]

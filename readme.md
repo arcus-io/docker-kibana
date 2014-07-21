@@ -1,12 +1,12 @@
 # Kibana
 
-Kibana 3 milestone 2
+Kibana 3.1.0
 
-Uses nginx to front the new Kibana
+Uses Nginx to serve Kibana
 
 * `docker build -t kibana .`
-* `docker run -e ES_HOST=1.2.3.4 -e ES_PORT=9200 kibana`
+* `docker run kibana`
 
 Ports
 
-* 80 (kibana)
+* 80
