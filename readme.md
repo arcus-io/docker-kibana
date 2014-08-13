@@ -15,3 +15,4 @@ Env
 
 * ES_HOST
 * ES_PORT
+* ES_SCHEME (https|http defaults to http)
