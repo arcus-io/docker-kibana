@@ -10,3 +10,9 @@ Uses Nginx to serve Kibana
 Ports
 
 * 80
+
+Env
+
+* ES_HOST
+* ES_PORT
+* ES_SCHEME (https|http defaults to http)
