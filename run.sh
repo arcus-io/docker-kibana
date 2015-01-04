@@ -36,4 +36,4 @@ function (Settings) {
 });
 EOF
 
-nginx -c /etc/nginx/nginx.conf
+nginx -c /etc/nginx/nginx.conf -g 'daemon off;'
